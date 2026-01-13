@@ -1,0 +1,14 @@
+#Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+#Python
+__pycache__/
+*.pyc 
+
+#Lambda package
+etl_lambda.zip
+
+# Env / secrets
+.env 
