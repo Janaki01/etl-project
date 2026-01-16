@@ -1,14 +1,15 @@
-from config import DB_URL, S3_BUCKET
-from extract import run_query
-from transform import clean_data
-from load import save_excel, upload_to_s3
-from charts import bar_chart, pie_chart
+print("main.py loaded")
+from etl.config import DB_URL, S3_BUCKET
+from etl.extract import extract_data
+from etl.transform import clean_data
+from etl.load import save_excel, upload_to_s3
+from etl.charts import bar_chart, pie_chart
 
 def run_etl():
     print ("ETL Started...")
 
     #1.Extract
-    df_sales = run_query(DB_URL, "sql/sales.sql")
+    df_sales = extract_data(DB_URL, "sql/sales.sql")
 
     #2.transform
     df_sales = clean_data(df_sales)

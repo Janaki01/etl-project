@@ -1,4 +1,4 @@
-import  matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import os
 
 def bar_chart(df, x,y, filename):

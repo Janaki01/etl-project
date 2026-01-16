@@ -22,5 +22,5 @@ jobs:
                 S3_BUCKET: ${{ secrets.S3_BUCKET }}
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
                 AWS_SECRET_KEY_ID: ${{ secrets.AWS_SECRET_KEY }}
-            run: python etl/main.py
+            run: python -m etl.main
 
