@@ -1,9 +1,11 @@
 import os
 
-DB_CONFIG = {
-    "host" : os.getenv("DB_HOST"),
-    "port" : os.getenv("DB_PORT", "5432"),
-    "database" : os.getenv("DB_NAME"),
-    "user" : os.getenv("DB_USER"),
-    "password" : os.getenv("DB_PASSWORD"),
-}
+DB_URL = os.getenv("DB_URL")
+S3_BUCKET = os.getenv("S3_BUCKET")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+
+if not DB_URL: 
+    raise ValueError("DB_URL is not set")
+if not S3_BUCKET: 
+    raise ValueError("S3_BUCKET is not set")
