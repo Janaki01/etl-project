@@ -2,10 +2,13 @@ name: ETL Automation
 on:
     push:
         branches: [main]
-        paths :
-          - "sql/**"
-          - "scripts/**"
-          - ".github/workflows/**"
+
+    workflow_dispatch:
+      
+        #paths :
+        #  - "sql/**"
+        #  - "scripts/**"
+        #  - ".github/workflows/**"
     schedule: 
         - cron: "0 2 * * *"
 jobs:
