@@ -31,7 +31,7 @@ jobs:
               DB_USER: ${{secrets.DB_USER}}
               DB_PASSWORD: ${{secrets.DB_PASSWORD}}
             run: |
-              python -m Scripts.init_db
+              python -m scripts.init_db
           - name: Run ETL and upload to S3
             env:
               DB_HOST: ${{secrets.DB_HOST}}
@@ -44,4 +44,4 @@ jobs:
               AWS_REGION: ${{ secrets.AWS_REGION }}
               S3_BUCKET: ${{ secrets.S3_BUCKET}}
             run: |
-              python -m Scripts.run_etl              
+              python -m etl.main              
