@@ -1,5 +1,9 @@
 import os
-DB_URL = os.getenv("DB_URL", )
-S3_BUCKET = os.getenv("S3_BUCKET")
-AWS_REGION = os.getenv("AWS_REGION", "ap-south-1")
-OUTPUR_DIR = "output"
+
+DB_CONFIG = {
+    "host" : os.getenv("DB_HOST"),
+    "port" : os.getenv("DB_PORT", "5432"),
+    "database" : os.getenv("DB_NAME"),
+    "user" : os.getenv("DB_USER"),
+    "password" : os.getenv("DB_PASSWORD"),
+}
