@@ -7,7 +7,7 @@ from etl.load import save_excel, upload_to_s3
 from etl.charts import bar_chart, pie_chart
 import os
 
-def run_etl():
+def main():
     print("ETL Started...")
     
     os.makedirs("output", exist_ok=True)
@@ -43,5 +43,5 @@ def run_etl():
     print("ETL Completed Successfully")
 
 if __name__== "__main__":
-    run_etl()
+    main()
    
