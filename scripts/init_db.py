@@ -6,12 +6,14 @@ SQL_DIR = os.path.join(BASE_DIR,"sql")
 SQL_FILES_IN_ORDER = [
     "ABC_Sales_Database_Schema.sql"
 ]
-# def run_sql_file(conn, filepath):
-#     print("Running {filepath} ...")
-#     with open(filepath, "r", encoding="utf-8") as f:
-#         sql = f.read()
-#         conn.exec_driver_sql(sql)
-#     print(f"Finished {filepath}")
+def run_sql_file(conn, path):
+#   print("Running {filepath} ...")
+    with open(path, "r", encoding="utf-8") as f:
+        sql = f.read()
+    statements = [s.strip() for s in sql.split(";") if s.strip()]
+    for stmt in statements:
+        conn.exec_driver_sql(stmt)
+    
 
 def init_db():
     engine= get_engine()
@@ -21,10 +23,12 @@ def init_db():
 
             if not os.path.exists(path):
                 raise FileNotFoundError(f"SQL file not found: {path}")
-            with open(path, "r", encoding="utf-8") as f:
-                sql = f.read()
-                conn.exec_driver_sql(sql)
-            print(f"Executed: {filename}")
+           # with open(path, "r", encoding="utf-8") as f:
+           #     sql = f.read()
+           #     conn.exec_driver_sql(sql)
+            print(f"Running SQL file: {filename}")
+            run_sql_file(conn, path)
+            print(f"Completed: {filename}")
 
     print("PostgreSQL schema initialized successfully")
 
