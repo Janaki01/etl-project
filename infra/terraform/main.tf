@@ -1,6 +1,9 @@
 provider "aws" {
   region = var.region
 }
+data "aws_vpc" "default" {
+    default = true
+}
 
 # S3 BUCKET
 resource "aws_s3_bucket" "reports" {
@@ -103,22 +106,24 @@ resource "aws_db_instance" "postgres" {
 #  }
           
 
-# resource "aws_security_group" "rds_sg" {
-#     name = "rds-postgres-sg"
+resource "aws_security_group" "rds_sg" {
+    name = "${var.project_name}-rds-sg"
+    vpc_id = data.aws_vpc.default.id
 
-#     ingress {
-#         from_port = 5432
-#         to_port = 5432
-#         protocol = "tcp"
-#         cidr_blocks = ["0.0.0.0/0"]
-#     }
-#     egress {
-#         from_port = 0
-#         to_port = 0
-#         protocol = "-1"
-#         cidr_blocks = ["0.0.0.0/0"]
-#     }
-# }
+    ingress {
+        description = "Allow PostgreSQL from anywhere (GitHub Actions)"
+        from_port = 5432
+        to_port = 5432
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+}
 
 resource "aws_iam_user" "etl_user" {
     name = "${var.project_name}-github-user"
