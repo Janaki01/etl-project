@@ -4,7 +4,7 @@ from etl.db import get_engine
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SQL_DIR = os.path.join(BASE_DIR,"sql")
 SQL_FILES_IN_ORDER = [
-    "ABC_Sales_Database_Schema.sql"
+    "abc_sales.sql"
 ]
 def run_sql_file(conn, path):
 #   print("Running {filepath} ...")
