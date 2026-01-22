@@ -14,5 +14,5 @@ DB_URL = (
 
 #if not DB_URL: 
 #    raise ValueError("DB_URL is not set")
-#if not S3_BUCKET: 
-#    raise ValueError("S3_BUCKET is not set")
+if not S3_BUCKET: 
+    raise ValueError("S3_BUCKET is not set")
